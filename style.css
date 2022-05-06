@@ -1,0 +1,28 @@
+body {
+	height: 100vh;
+	width: 100vw;
+	background-color: #ffeead;
+	margin: 0px;
+	padding: 0px;
+}
+.todoContainer {
+	display: flex;
+	height: 100vh;
+	width: 100vw;
+	align-items: flex-end;
+	justify-content: flex-end;
+	padding: 4vh;
+}
+#newToDo {
+	background-color: #d9534f;
+	border: #d9534f;
+	padding: 10px;
+}
+.navbar {
+	background: #96ceb4 !important;
+}
+.navText {
+	color: #fbf8f1 !important;
+}
+.mainBody {
+}
