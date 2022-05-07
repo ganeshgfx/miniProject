@@ -43,6 +43,11 @@ body {
 	width: 100vw;
 	flex-direction: column-reverse;
 }
+@media only screen and (max-width: 500px) {
+	.hide_text2 {
+		display: none;
+	}
+}
 @media only screen and (max-width: 600px) {
 	.hide_text {
 		display: none;
@@ -57,7 +62,7 @@ body {
 	justify-content: space-around;
 }
 .card {
-	margin-top: 20px !important;
+	margin: 10px !important;
 }
 .badgeX {
 	color: rgb(255, 255, 255) !important;

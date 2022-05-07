@@ -53,7 +53,7 @@ session_start();
 					<?php
 					if (isset($_SESSION['user_id'])) {
 						echo
-						'<button data-bs-toggle="modal" data-bs-target="#todoModal" id="newToDo" type="button" class="btn btn-primary"><i class="bi bi-plus-circle-dotted"></i><span class="hide_text"> New Todo</button>';
+						'<button data-bs-toggle="modal" data-bs-target="#todoModal" id="newToDo" type="button" class="btn btn-primary"><i class="bi bi-plus-circle-dotted"></i><span class="hide_text2"> New Todo</button>';
 					} else {
 						echo
 						'';
