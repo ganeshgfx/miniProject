@@ -88,10 +88,26 @@ function loadTodo() {
 			let todoList = "";
 			data.forEach((data) => {
 				todo = data.todo;
-				todoList += `<div class="card" ><div class="card-body"><h5 class="card-title">${todo.title} ~<i>${todo.user_id} </i></h5><p class="card-text">${todo.content}</p><button type="button" class="btn btn-info"> <i class="bi bi-pin-angle"></i>Pin <span class="badge badgeX badge-pill badge-light">${data.pins}</span></button></div></div>`;
+				todoList += `<div class="card" ><div style="max-width: 18rem;" class="card-body"><h5 class="card-title">${todo.title} ~<i>${todo.user_id} </i></h5><p class="card-text">${todo.content}</p><button type="button" onclick="pin(${data.todo.todo_id})" class="btn btn-info"> <i class="bi bi-pin-angle"></i>Pin <span class="badge badgeX badge-pill badge-light">${data.pins}</span></button></div></div>`;
 			});
 			containTodo.innerHTML = todoList;
 			console.log(data);
+		},
+	});
+}
+loadTodo();
+
+function pin(id) {
+	$.ajax({
+		url: site + "/php/pin.php",
+		method: "POST",
+		data: {
+			todo_id: id,
+		},
+		dataType: "JSON",
+		success: function (data) {
+			console.log(data);
+			loadTodo();
 		},
 	});
 }
