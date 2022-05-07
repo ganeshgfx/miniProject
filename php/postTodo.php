@@ -15,7 +15,7 @@ $send->sent = false;
 $title = $_REQUEST['title'];
 $content = $_REQUEST['content'];
 
-$sql = "INSERT INTO `todo` (`user_id`,`title`, `content`, `time`) VALUES ('" . $_SESSION["user_id"] . "', '" . $title . "' , '" . $content . "',CURRENT_TIMESTAMP);";
+$sql = "INSERT INTO `todo`(`user_id`,`title`, `content`, `time`) VALUES ('" . $_SESSION["user_id"] . "', '" . $title . "' , '" . $content . "',CURRENT_TIMESTAMP);";
 
 if (mysqli_query($con, $sql)) {
     $send->sent = true;

@@ -74,8 +74,9 @@ function post() {
 	}
 }
 function loadTodo() {
+	const containTodo = document.getElementById("containTodo");
 	$.ajax({
-		url: site + "/php/postTodo.php",
+		url: site + "/php/fetchTodo.php",
 		method: "POST",
 		data: {
 			title: todoTitle.value,
@@ -83,13 +84,14 @@ function loadTodo() {
 		},
 		dataType: "JSON",
 		success: function (data) {
+			containTodo.innerHTML = "";
+			let todoList = "";
+			data.forEach((data) => {
+				todo = data.todo;
+				todoList += `<div class="card" ><div class="card-body"><h5 class="card-title">${todo.title} ~<i>${todo.user_id} </i></h5><p class="card-text">${todo.content}</p><button type="button" class="btn btn-info"> <i class="bi bi-pin-angle"></i>Pin <span class="badge badgeX badge-pill badge-light">${data.pins}</span></button></div></div>`;
+			});
+			containTodo.innerHTML = todoList;
 			console.log(data);
-			if (!data.sent) {
-				alert("Error posting todo");
-			}
-			if (data.sent) {
-				location.reload();
-			}
 		},
 	});
 }
