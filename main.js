@@ -87,8 +87,19 @@ function loadTodo() {
 			containTodo.innerHTML = "";
 			let todoList = "";
 			data.forEach((data) => {
+				update =
+					'<div class="options"><button type="button" class="btn btn-outline-success"><i class="bi bi-pencil"></i></button>&nbsp;';
+
+				update = "";
+
+				let div =
+					update +
+					`<button onclick="deleteTodo(${data.todo.todo_id});" type = "button" class="btn btn-outline-danger" > <i class="bi bi-eraser"></i></button ></div > `;
 				todo = data.todo;
-				todoList += `<div class="card" ><div style="max-width: 18rem;" class="card-body"><h5 style="width: 100%;" class="card-title">${todo.title} ~<i>${todo.user_id} </i></h5><p class="card-text">${todo.content}</p><button type="button" onclick="pin(${data.todo.todo_id})" class="btn btn-info"> <i class="bi bi-pin-angle"></i>Pin <span class="badge badgeX badge-pill badge-light">${data.pins}</span></button><div class="subtxt">${data.todo.time}</div></div></div>`;
+				if (todo.user_id != user_id) {
+					div = "";
+				}
+				todoList += `<div class="card" ><div style="max-width: 18rem;" class="card-body">${div}<h5 style="width: 100%;" class="card-title">${todo.title} ~<i>${todo.user_id} </i></h5><p class="card-text">${todo.content}</p><button type="button" onclick="pin(${data.todo.todo_id})" class="btn btn-info"> <i class="bi bi-pin-angle"></i>Pin <span class="badge badgeX badge-pill badge-light">${data.pins}</span></button><div class="subtxt">${data.todo.time}</div></div></div>`;
 			});
 			containTodo.innerHTML = todoList;
 			console.log(data);
@@ -112,6 +123,25 @@ function pin(id) {
 		success: function (data) {
 			console.log(data);
 			loadTodo();
+		},
+	});
+}
+
+function deleteTodo(id) {
+	$.ajax({
+		url: site + "/php/delete.php",
+		method: "POST",
+		data: {
+			id: id,
+		},
+		dataType: "JSON",
+		success: function (data) {
+			console.log(data);
+			if (!data.deleted) {
+				alert("Error deleting todo");
+			} else {
+				location.reload();
+			}
 		},
 	});
 }
