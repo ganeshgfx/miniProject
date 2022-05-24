@@ -26,6 +26,9 @@ session_start();
 
 <body>
 	<div class="mainBody">
+		<footer class="footer">
+			<a href="https://github.com/ganeshgfx/miniProject" type="button" class="btn"><i class="bi bi-code-slash"></i>&nbsp;View Source Code</a>
+		</footer>
 		<div class="containTodo" id="containTodo">
 			<div class="card" style="width: 18rem">
 				<div class="card-body">
@@ -132,6 +135,7 @@ session_start();
 				</div>
 			</div>
 		</div>
+
 	</div>
 	<script src="main.js"></script>
 </body>
