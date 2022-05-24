@@ -88,7 +88,7 @@ function loadTodo() {
 			let todoList = "";
 			data.forEach((data) => {
 				todo = data.todo;
-				todoList += `<div class="card" ><div style="max-width: 18rem;" class="card-body"><h5 class="card-title">${todo.title} ~<i>${todo.user_id} </i></h5><p class="card-text">${todo.content}</p><button type="button" onclick="pin(${data.todo.todo_id})" class="btn btn-info"> <i class="bi bi-pin-angle"></i>Pin <span class="badge badgeX badge-pill badge-light">${data.pins}</span></button></div></div>`;
+				todoList += `<div class="card" ><div style="max-width: 18rem;" class="card-body"><h5 style="width: 100%;" class="card-title">${todo.title} ~<i>${todo.user_id} </i></h5><p class="card-text">${todo.content}</p><button type="button" onclick="pin(${data.todo.todo_id})" class="btn btn-info"> <i class="bi bi-pin-angle"></i>Pin <span class="badge badgeX badge-pill badge-light">${data.pins}</span></button></div></div>`;
 			});
 			containTodo.innerHTML = todoList;
 			console.log(data);
@@ -98,6 +98,10 @@ function loadTodo() {
 loadTodo();
 
 function pin(id) {
+	console.log(user_id, 1);
+	if (user_id == "") {
+		alert("Please login to use this feature.");
+	}
 	$.ajax({
 		url: site + "/php/pin.php",
 		method: "POST",
